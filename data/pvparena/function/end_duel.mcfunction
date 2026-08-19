@@ -1,6 +1,6 @@
 # ============================================================
 # end_duel.mcfunction
-# ⚠️ 1 ligne à adapter (coordonnées du lobby), marquée "À ADAPTER"
+# Retour au spawn de la dimension PVP
 # ============================================================
 
 # S'il y a un perdant désigné (mort en combat, pas une déconnexion),
@@ -8,8 +8,8 @@
 execute if entity @a[tag=pvp.loser] as @a[tag=pvp.duel,tag=!pvp.loser] run scoreboard players add @s pvp.wins 1
 execute if entity @a[tag=pvp.loser] as @a[tag=pvp.duel,tag=!pvp.loser] run tellraw @a [{"text":"🏆 ","color":"gold"},{"selector":"@s"},{"text":" remporte le duel !","color":"yellow"}]
 
-# À ADAPTER : coordonnées de ton lobby / spawn dans l'overworld
-execute as @a[tag=pvp.duel] in minecraft:overworld run tp @s 0 65 0
+# Retour au spawn de la dimension PVP
+execute as @a[tag=pvp.duel] in pvp:dimension run tp @s 0 64 0
 
 execute as @a[tag=pvp.duel] run function pvparena:cleanup_player
 

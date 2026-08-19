@@ -1,5 +1,6 @@
 # Contexte : exécuté "as" le joueur qui vient de faire /trigger pvp.trigger
 execute if entity @s[tag=pvp.duel] run return run tellraw @s [{"text":"Tu es déjà en duel.","color":"red"}]
+execute if score @s pvp.pending_from matches 1.. run return run tellraw @s [{"text":"Tu as déjà une demande de duel en attente.","color":"red"}]
 
 # pvp.menu_target identifie le joueur POUR QUI on construit le menu.
 # On en tague au plus un à la fois : si deux joueurs ouvrent le menu

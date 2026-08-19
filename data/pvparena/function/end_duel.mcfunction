@@ -8,7 +8,7 @@
 execute if entity @a[tag=pvp.loser] as @a[tag=pvp.duel,tag=!pvp.loser] run scoreboard players add @s pvp.wins 1
 execute if entity @a[tag=pvp.loser] as @a[tag=pvp.duel,tag=!pvp.loser] run tellraw @a [{"text":"🏆 ","color":"gold"},{"selector":"@s"},{"text":" remporte le duel !","color":"yellow"}]
 
-# Retour au spawn de la dimension PVP
+# Retour au spawn de la dimension PVP (à adapter avec tes coordonnées de spawn)
 execute as @a[tag=pvp.duel] in pvp:dimension run tp @s 0 64 0
 
 execute as @a[tag=pvp.duel] run function pvparena:cleanup_player

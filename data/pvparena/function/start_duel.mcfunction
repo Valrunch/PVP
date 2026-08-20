@@ -13,8 +13,8 @@ tag @a[tag=pvp.slot2] add pvp.duel
 execute as @a[tag=pvp.duel] run scoreboard players operation @s pvp.deaths_start = @s pvp.deaths
 
 # Spawn dans la dimension PVP avec MultiWorld
-execute as @a[tag=pvp.slot1] in pvp:dimension run tp @s 100 65 90 90 0
-execute as @a[tag=pvp.slot2] in pvp:dimension run tp @s 100 65 110 -90 0
+execute as @a[tag=pvp.slot1] in pvp run tp @s 100 65 90 90 0
+execute as @a[tag=pvp.slot2] in pvp run tp @s 100 65 110 -90 0
 
 execute as @a[tag=pvp.duel] run function pvparena:prepare_player
 

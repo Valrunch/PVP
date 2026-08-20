@@ -8,4 +8,4 @@
 # "place template" est 100% vanilla : aucune dépendance à WorldEdit
 # pour le reset auto, donc aucun risque de conflit avec ton stack de mods.
 
-execute in pvp run place template pvparena:arena 90 60 80
+execute in multiworld:pvp run place template pvparena:arena 90 60 80

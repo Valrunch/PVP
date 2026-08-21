@@ -19,7 +19,7 @@ execute if entity @a[tag=pvp.loser] as @a[tag=pvp.loser] run title @s title {"te
 # A ADAPTER : mets tes coordonnees de lobby / spawn overworld
 execute as @a[tag=pvp.duel] in minecraft:overworld run tp @s 0 100 0
 
-execute as @a[tag=pvp.duel] run function potatopvp:cleanup_player
+execute as @a[tag=pvp.duel] run function pvp:cleanup_player
 
-function potatopvp:reset_arena
+function pvp:reset_arena
 scoreboard players set #global pvp.state 0

@@ -3,4 +3,4 @@ $execute as @a[scores={pvp.id=$(target_id)}] run scoreboard players set @s pvp.p
 $execute as @a[scores={pvp.id=$(target_id)}] run scoreboard players enable @s pvp.accept
 $execute as @a[scores={pvp.id=$(target_id)}] run scoreboard players enable @s pvp.decline
 $execute as @a[scores={pvp.id=$(target_id)}] run tellraw @s [{"text":"\u2694 ","color":"red"},{"selector":"@a[scores={pvp.id=$(requester_id)}]","color":"yellow"},{"text":" te defie en duel !","color":"gray"}]
-$execute as @a[scores={pvp.id=$(target_id)}] run menu potatopvp:duel_response
+$execute as @a[scores={pvp.id=$(target_id)}] run menu pvp:duel_response

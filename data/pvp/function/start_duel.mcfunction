@@ -13,11 +13,11 @@ execute as @a[tag=pvp.duel] run scoreboard players operation @s pvp.deaths_start
 execute as @a[tag=pvp.slot1] in multiworld:pvp run tp @s 100 65 90 90 0
 execute as @a[tag=pvp.slot2] in multiworld:pvp run tp @s 100 65 110 -90 0
 
-execute as @a[tag=pvp.duel] run function potatopvp:prepare_player
+execute as @a[tag=pvp.duel] run function pvp:prepare_player
 
 # Resistance quasi totale le temps du decompte : personne ne peut
 # taper avant "COMBATTEZ", equite garantie sans logique complexe.
 execute as @a[tag=pvp.duel] run effect give @s minecraft:resistance 4 255 true
 
 scoreboard players set #global pvp.state 2
-function potatopvp:countdown_3
+function pvp:countdown_3

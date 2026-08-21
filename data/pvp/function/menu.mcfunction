@@ -11,5 +11,5 @@ scoreboard players set #candidates pvp.state 0
 execute as @a[tag=!pvp.duel,tag=!pvp.menu_target] run scoreboard players add #candidates pvp.state 1
 execute if score #candidates pvp.state matches 0 run tellraw @s [{"text":"Aucun joueur disponible pour l'instant.","color":"gray"}]
 
-execute as @a[tag=!pvp.duel,tag=!pvp.menu_target] run function potatopvp:menu_send_line
+execute as @a[tag=!pvp.duel,tag=!pvp.menu_target] run function pvp:menu_send_line
 tag @s remove pvp.menu_target

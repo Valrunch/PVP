@@ -4,6 +4,14 @@
 # score correspondant : le "if"/selector sort immédiatement.
 # ============================================================
 
+# --- Trigger management : keep the commands easy to use and intuitive ---
+# Players can use the trigger directly without needing extra setup.
+scoreboard players enable @a pvp.trigger
+scoreboard players enable @a pvp.request
+scoreboard players enable @a pvp.accept
+scoreboard players enable @a pvp.decline
+scoreboard players enable @a pvp.stats
+
 # --- Attribution paresseuse d'un ID unique (couvre les nouvelles connexions) ---
 execute as @a unless score @s pvp.id matches 1.. run function potatopvp:assign_id
 

@@ -17,13 +17,20 @@ scoreboard objectives add pvp.id dummy
 
 # pvp.trigger / pvp.request / pvp.accept / pvp.decline sont des
 # objectifs "trigger" : n'importe quel joueur peut faire /trigger
-# <objectif>, même sans être op. C'est ça qui permet à un joueur
-# normal de cliquer sur un bouton de chat sans droits particuliers.
+# <objectif>, même sans être op. On les active automatiquement pour
+# chaque joueur pour garder le système plus simple et plus intuitif.
 scoreboard objectives add pvp.trigger trigger "Ouvrir le menu de défi"
 scoreboard objectives add pvp.request trigger "Défier un joueur"
 scoreboard objectives add pvp.accept trigger "Accepter un duel"
 scoreboard objectives add pvp.decline trigger "Refuser un duel"
 scoreboard objectives add pvp.pending_from dummy
+
+# Enabling direct /trigger use without extra setup for regular players.
+scoreboard players enable @a pvp.trigger
+scoreboard players enable @a pvp.request
+scoreboard players enable @a pvp.accept
+scoreboard players enable @a pvp.decline
+scoreboard players enable @a pvp.stats
 
 # #global et #next_id sont des "fake players" (pas de vrais joueurs),
 # juste des variables globales pour éviter de dupliquer l'état.

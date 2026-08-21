@@ -1,1 +1,0 @@
-tellraw @s [{"text":"=== Tes stats PvP ===  ","color":"gold"},{"text":"Victoires: ","color":"gray"},{"score":{"name":"@s","objective":"pvp.wins"},"color":"green"},{"text":"  Defaites: ","color":"gray"},{"score":{"name":"@s","objective":"pvp.losses"},"color":"red"}]

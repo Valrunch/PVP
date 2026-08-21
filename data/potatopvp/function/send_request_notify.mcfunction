@@ -1,3 +1,0 @@
-$tellraw @s [{"text":"Demande de duel envoyée à ","color":"aqua"},{"selector":"@a[scores={pvp.id=$(target_id)}]","color":"yellow"},{"text":".","color":"aqua"}]
-$execute as @a[scores={pvp.id=$(target_id)}] run scoreboard players set @s pvp.pending_from $(requester_id)
-$execute as @a[scores={pvp.id=$(target_id)}] run tellraw @s [{"text":"⚔ ","color":"red"},{"selector":"@a[scores={pvp.id=$(requester_id)}]","color":"yellow"},{"text":" te défie en duel !  ","color":"gray"},{"text":"[Accepter]","color":"green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger pvp.accept set $(requester_id)"}},{"text":"  "},{"text":"[Refuser]","color":"red","bold":true,"clickEvent":{"action":"run_command","value":"/trigger pvp.decline set $(requester_id)"}}]

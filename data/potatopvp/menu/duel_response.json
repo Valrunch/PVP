@@ -7,9 +7,12 @@
       "slot": [1, 3],
       "item": {
         "id": "minecraft:lime_wool",
-        "components": {
-          "custom_name": "§a§lAccepter le duel",
-          "lore": ["§7Clique pour rejoindre l'arene"]
+        "Count": 1,
+        "tag": {
+          "display": {
+            "Name": "{\"text\":\"§a§lAccepter le duel\"}",
+            "Lore": ["{\"text\":\"§7Clique pour rejoindre l'arene\"}"]
+          }
         }
       },
       "action": {"type": "command", "command": "trigger pvp.accept"}
@@ -19,9 +22,12 @@
       "slot": [1, 7],
       "item": {
         "id": "minecraft:red_wool",
-        "components": {
-          "custom_name": "§c§lRefuser le duel",
-          "lore": ["§7Clique pour decliner"]
+        "Count": 1,
+        "tag": {
+          "display": {
+            "Name": "{\"text\":\"§c§lRefuser le duel\"}",
+            "Lore": ["{\"text\":\"§7Clique pour decliner\"}"]
+          }
         }
       },
       "action": {"type": "command", "command": "trigger pvp.decline"}

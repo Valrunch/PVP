@@ -16,8 +16,10 @@ execute if entity @a[tag=pvp.loser] as @a[tag=pvp.loser] run title @s title {"te
 # DECLENCHE l'echange automatique d'inventaire (Dimensional Inventories
 # detecte le changement de pool "pvp" -> "default" et restaure le stuff
 # d'origine). Rester dans multiworld:pvp ne le declencherait PAS.
-# A ADAPTER : mets tes coordonnees de lobby / spawn overworld
 execute as @a[tag=pvp.duel] in minecraft:overworld run tp @s 0 100 0
+
+# Restore the exact previous position and spawn point before the duel.
+execute as @a[tag=pvp.duel] run function pvp:restore_return_state with storage pvp:tmp.return
 
 execute as @a[tag=pvp.duel] run function pvp:cleanup_player
 

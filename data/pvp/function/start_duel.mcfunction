@@ -7,6 +7,9 @@
 tag @a[tag=pvp.slot1] add pvp.duel
 tag @a[tag=pvp.slot2] add pvp.duel
 
+# Save the exact place and facing direction before entering the duel arena.
+execute as @a[tag=pvp.duel] run function pvp:save_return_state
+
 # Reference pour la detection de victoire (voir check_win.mcfunction)
 execute as @a[tag=pvp.duel] run scoreboard players operation @s pvp.deaths_start = @s pvp.deaths
 

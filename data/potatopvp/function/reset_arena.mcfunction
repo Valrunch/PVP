@@ -5,4 +5,4 @@
 # 100% vanilla, aucune dependance a WorldEdit pour le reset auto.
 # ============================================================
 
-execute in pvp:dimension run place template potatopvp:arena 90 60 80
+execute in multiworld:pvp run place template potatopvp:arena 90 60 80

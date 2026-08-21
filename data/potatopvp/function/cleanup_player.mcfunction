@@ -1,7 +1,9 @@
-# Contexte : exécuté "as" chaque ex-duelliste
+# Contexte : exécuté "as" chaque ex-duelliste, APRES le retour overworld.
+# Pas de "clear @s" ici : Dimensional Inventories vient de restaurer le
+# vrai inventaire du joueur au moment du changement de dimension juste
+# avant — un clear ici l'effacerait immédiatement. Idem pour les effets
+# (le mod les gère aussi lors du changement de pool).
 gamemode survival @s
-clear @s
-effect clear @s
 tag @s remove pvp.duel
 tag @s remove pvp.slot1
 tag @s remove pvp.slot2

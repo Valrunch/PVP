@@ -30,4 +30,4 @@ scoreboard objectives add pvp.pending_from dummy
 scoreboard players set #global pvp.state 0
 scoreboard players add #next_id pvp.state 0
 
-tellraw @a [{"text":"[potatoPVP v1.0] datapack chargé.","color":"dark_gray"}]
+tellraw @a [{"text":"[potatoPVP v1.1] datapack chargé.","color":"dark_gray"}]

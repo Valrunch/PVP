@@ -1,3 +1,1 @@
-PvP datapack for my Minecraft server. 
-
-__in development__
+__V.1.0 in development__

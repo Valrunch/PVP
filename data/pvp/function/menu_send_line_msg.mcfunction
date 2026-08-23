@@ -1,0 +1,1 @@
+$tellraw @a[tag=pvp.menu_target] [{"text":"- ","color":"gray"},{"selector":"@s","color":"yellow"},{"text":"  "},{"text":"[Defier]","color":"green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger pvp.request set $(id)"},"hoverEvent":{"action":"show_text","value":"Envoyer une demande de duel"}}]

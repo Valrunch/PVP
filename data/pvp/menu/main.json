@@ -8,8 +8,8 @@
       "item": {
         "id": "minecraft:diamond_sword",
         "components": {
-          "custom_name": "§a§lDefier un joueur",
-          "lore": ["§7Affiche la liste des joueurs", "§7disponibles dans le chat."]
+          "minecraft:custom_name": "§a§lDefier un joueur",
+          "minecraft:lore": ["§7Affiche la liste des joueurs", "§7disponibles dans le chat."]
         }
       },
       "action": [
@@ -23,8 +23,8 @@
       "item": {
         "id": "minecraft:totem_of_undying",
         "components": {
-          "custom_name": "§6§lMes stats",
-          "lore": ["§7Affiche tes victoires et", "§7tes defaites dans le chat."]
+          "minecraft:custom_name": "§6§lMes stats",
+          "minecraft:lore": ["§7Affiche tes victoires et", "§7tes defaites dans le chat."]
         }
       },
       "action": [
@@ -38,8 +38,8 @@
       "item": {
         "id": "minecraft:written_book",
         "components": {
-          "custom_name": "§b§lAide",
-          "lore": [
+          "minecraft:custom_name": "§b§lAide",
+          "minecraft:lore": [
             "§7/trigger pvp.trigger §8- menu",
             "§7/trigger pvp.accept §8- accepter",
             "§7/trigger pvp.decline §8- refuser",
@@ -55,8 +55,8 @@
       "item": {
         "id": "minecraft:barrier",
         "components": {
-          "custom_name": "§c§lAnnuler ma demande",
-          "lore": ["§7Annule une demande de duel", "§7que tu viens d'envoyer."]
+          "minecraft:custom_name": "§c§lAnnuler ma demande",
+          "minecraft:lore": ["§7Annule une demande de duel", "§7que tu viens d'envoyer."]
         }
       },
       "action": [

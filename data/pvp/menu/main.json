@@ -6,8 +6,7 @@
       "type": "item",
       "slot": [2, 2],
       "item": {
-        "id": "minecraft:diamond_sword",
-        "nbt": "{HideFlags:63}",
+        "id": "minecraft:compass",
         "components": {
           "minecraft:custom_name": "{\"text\":\"Defier un joueur\",\"color\":\"green\",\"bold\":true}",
           "minecraft:lore": [

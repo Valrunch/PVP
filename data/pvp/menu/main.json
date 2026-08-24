@@ -1,5 +1,5 @@
 {
-  "name": "potatoPVP - Menu principal",
+  "name": "pvp - Menu principal",
   "rows": 3,
   "items": [
     {
@@ -11,7 +11,7 @@
           "minecraft:custom_name": "{\"text\":\"Defier un joueur\",\"color\":\"green\",\"bold\":true}",
           "minecraft:lore": [
             "{\"text\":\"Affiche la liste des joueurs\",\"color\":\"gray\"}",
-            "{\"text\":\"disponibles dans le chat.\",\"color\":\"gray\"}"
+            "{\"text\":\"disponibles dans le chat pour un duel.\",\"color\":\"gray\"}"
           ]
         }
       },
@@ -48,9 +48,7 @@
           "minecraft:lore": [
             "{\"text\":\"/trigger pvp.trigger - menu\",\"color\":\"gray\"}",
             "{\"text\":\"/trigger pvp.accept - accepter\",\"color\":\"gray\"}",
-            "{\"text\":\"/trigger pvp.decline - refuser\",\"color\":\"gray\"}",
-            "{\"text\":\"/trigger pvp.cancel - annuler\",\"color\":\"gray\"}",
-            "{\"text\":\"/trigger pvp.stats - tes stats\",\"color\":\"gray\"}"
+            "{\"text\":\"/trigger pvp.decline - refuser\",\"color\":\"gray\"}"
           ]
         }
       }

@@ -8,8 +8,10 @@
       "item": {
         "id": "minecraft:lime_wool",
         "components": {
-          "minecraft:custom_name": "§a§lAccepter le duel",
-          "minecraft:lore": ["§7Clique pour rejoindre l'arene"]
+          "minecraft:custom_name": "{\"text\":\"Accepter le duel\",\"color\":\"green\",\"bold\":true}",
+          "minecraft:lore": [
+            "{\"text\":\"Clique pour rejoindre l'arene\",\"color\":\"gray\"}"
+          ]
         }
       },
       "action": [
@@ -23,8 +25,10 @@
       "item": {
         "id": "minecraft:red_wool",
         "components": {
-          "minecraft:custom_name": "§c§lRefuser le duel",
-          "minecraft:lore": ["§7Clique pour decliner"]
+          "minecraft:custom_name": "{\"text\":\"Refuser le duel\",\"color\":\"red\",\"bold\":true}",
+          "minecraft:lore": [
+            "{\"text\":\"Clique pour decliner\",\"color\":\"gray\"}"
+          ]
         }
       },
       "action": [

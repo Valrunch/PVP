@@ -4,7 +4,7 @@
   "items": [
     {
       "type": "item",
-      "slot": [2, 2],
+      "slot": [1, 2],
       "item": {
         "id": "minecraft:compass",
         "components": {
@@ -22,7 +22,7 @@
     },
     {
       "type": "item",
-      "slot": [2, 4],
+      "slot": [1, 4],
       "item": {
         "id": "minecraft:totem_of_undying",
         "components": {
@@ -40,7 +40,7 @@
     },
     {
       "type": "item",
-      "slot": [2, 6],
+      "slot": [1, 6],
       "item": {
         "id": "minecraft:written_book",
         "components": {
@@ -55,7 +55,7 @@
     },
     {
       "type": "item",
-      "slot": [2, 8],
+      "slot": [1, 8],
       "item": {
         "id": "minecraft:barrier",
         "components": {
@@ -68,6 +68,40 @@
       },
       "action": [
         {"type": "command", "command": "execute as %name% run function pvp:cancel_request"},
+        {"type": "navigate", "action": "close"}
+      ]
+    },
+    {
+      "type": "item",
+      "slot": [2, 3],
+      "item": {
+        "id": "minecraft:barrier",
+        "components": {
+          "minecraft:custom_name": "{\"text\":\"accepter une demande de duel\",\"color\":\"red\",\"bold\":true}",
+          "minecraft:lore": [
+            "{\"text\":\"accepter une demande de duel\",\"color\":\"gray\"}"
+          ]
+        }
+      },
+      "action": [
+        {"type": "command", "command": "execute as %name% run function pvp:accept_request"},
+        {"type": "navigate", "action": "close"}
+      ]
+    },
+    {
+      "type": "item",
+      "slot": [2, 5],
+      "item": {
+        "id": "minecraft:barrier",
+        "components": {
+          "minecraft:custom_name": "{\"text\":\"refuser une demande de duel\",\"color\":\"red\",\"bold\":true}",
+          "minecraft:lore": [
+            "{\"text\":\"refuser une demande de duel\",\"color\":\"gray\"}"
+          ]
+        }
+      },
+      "action": [
+        {"type": "command", "command": "execute as %name% run function pvp:decline_request"},
         {"type": "navigate", "action": "close"}
       ]
     }

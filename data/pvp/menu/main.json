@@ -73,7 +73,7 @@
     },
     {
       "type": "item",
-      "slot": [2, 3],
+      "slot": [3, 3],
       "item": {
         "id": "green_wool",
         "components": {
@@ -87,7 +87,7 @@
     },
     {
       "type": "item",
-      "slot": [2, 7],
+      "slot": [3, 7],
       "item": {
         "id": "red_wool",
         "components": {

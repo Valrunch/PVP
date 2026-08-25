@@ -22,5 +22,12 @@ execute as @a[tag=pvp.duel] run function pvp:prepare_player
 # taper avant "COMBATTEZ", equite garantie sans logique complexe.
 execute as @a[tag=pvp.duel] run effect give @s minecraft:resistance 4 255 true
 
+# Nettoyage des compteurs de decompte deja planifies par un ancien duel.
+# Sinon un ancien evenement peut still s'executer plus tard et lancer un
+# faux "Duel lance !" ou modifier l'etat du combat pendant un autre duel.
+schedule clear pvp:countdown_2
+schedule clear pvp:countdown_1
+schedule clear pvp:countdown_go
+
 scoreboard players set #global pvp.state 2
 function pvp:countdown_3

@@ -77,7 +77,7 @@
       "item": {
         "id": "green_wool",
         "components": {
-          "minecraft:custom_name": "{\"text\":\"accepter une demande de duel\",\"color\":\"red\",\"bold\":true}"
+          "minecraft:custom_name": "{\"text\":\"accepter une demande de duel\",\"color\":\"green\",\"bold\":true}"
         }
       },
       "action": [

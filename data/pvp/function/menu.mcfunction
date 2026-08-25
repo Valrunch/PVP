@@ -1,15 +1,19 @@
-# Contexte : exécuté "as" le joueur qui vient de faire /trigger pvp.trigger
-execute if entity @s[tag=pvp.duel] run return run tellraw @s [{"text":"Tu es déjà en duel.","color":"red"}]
+# Contexte : execute "as" le joueur qui vient de faire /trigger pvp.trigger
+execute if entity @s[tag=pvp.duel] run return run tellraw @s [{"text":"[Duel] ","color":"dark_gray"},{"text":"Tu es deja en duel.","color":"red"}]
 
 # pvp.menu_target identifie le joueur POUR QUI on construit le menu.
-# On en tague au plus un à la fois : si deux joueurs ouvrent le menu
-# exactement au même tick, l'un des deux devra juste refaire /trigger.
+# On en tague au plus un a la fois. Les commandes Minecraft s'executent
+# de facon sequentielle (pas de vraie concurrence serveur), donc deux
+# joueurs qui ouvrent le menu "en meme temps" sont en realite traites
+# l'un apres l'autre : aucune collision possible ici.
 tag @s add pvp.menu_target
-tellraw @s [{"text":"=== Défier un joueur ===","color":"gold"}]
+tellraw @s [{"text":"=== Defier un joueur ===","color":"gold"}]
 
-scoreboard players set #candidates pvp.state 0
-execute as @a[tag=!pvp.duel,tag=!pvp.menu_target] run scoreboard players add #candidates pvp.state 1
-execute if score #candidates pvp.state matches 0 run tellraw @s [{"text":"Aucun joueur disponible pour l'instant.","color":"gray"}]
+scoreboard players set #candidates pvp.candidates 0
+execute as @a[tag=!pvp.duel,tag=!pvp.menu_target] run scoreboard players add #candidates pvp.candidates 1
+execute if score #candidates pvp.candidates matches 0 run tellraw @s [{"text":"[Duel] ","color":"dark_gray"},{"text":"Aucun joueur disponible pour l'instant.","color":"gray"}]
 
 execute as @a[tag=!pvp.duel,tag=!pvp.menu_target] run function pvp:menu_send_line
 tag @s remove pvp.menu_target
+
+tellraw @s [{"text":"Retour au menu : ","color":"dark_gray"},{"text":"/trigger pvp.trigger","color":"yellow"}]

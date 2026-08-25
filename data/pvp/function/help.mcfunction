@@ -1,0 +1,6 @@
+tellraw @s [{"text":"=== Commandes PvP ===","color":"gold"}]
+tellraw @s [{"text":"/trigger pvp.trigger","color":"yellow"},{"text":" - ouvrir le menu de defi","color":"gray"}]
+tellraw @s [{"text":"/trigger pvp.accept","color":"yellow"},{"text":" - accepter un duel recu","color":"gray"}]
+tellraw @s [{"text":"/trigger pvp.decline","color":"yellow"},{"text":" - refuser un duel recu","color":"gray"}]
+tellraw @s [{"text":"/trigger pvp.cancel","color":"yellow"},{"text":" - annuler ta demande envoyee","color":"gray"}]
+tellraw @s [{"text":"/trigger pvp.stats","color":"yellow"},{"text":" - voir tes victoires/defaites","color":"gray"}]

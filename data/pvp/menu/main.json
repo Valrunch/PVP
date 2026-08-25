@@ -1,0 +1,75 @@
+{
+  "name": "pvp - Menu principal",
+  "rows": 3,
+  "items": [
+    {
+      "type": "item",
+      "slot": [2, 2],
+      "item": {
+        "id": "minecraft:compass",
+        "components": {
+          "minecraft:custom_name": "{\"text\":\"Defier un joueur\",\"color\":\"green\",\"bold\":true}",
+          "minecraft:lore": [
+            "{\"text\":\"Affiche la liste des joueurs\",\"color\":\"gray\"}",
+            "{\"text\":\"disponibles dans le chat pour un duel.\",\"color\":\"gray\"}"
+          ]
+        }
+      },
+      "action": [
+        {"type": "command", "command": "execute as %name% run function pvp:menu"},
+        {"type": "navigate", "action": "close"}
+      ]
+    },
+    {
+      "type": "item",
+      "slot": [2, 4],
+      "item": {
+        "id": "minecraft:totem_of_undying",
+        "components": {
+          "minecraft:custom_name": "{\"text\":\"Mes stats\",\"color\":\"gold\",\"bold\":true}",
+          "minecraft:lore": [
+            "{\"text\":\"Affiche tes victoires et\",\"color\":\"gray\"}",
+            "{\"text\":\"tes defaites dans le chat.\",\"color\":\"gray\"}"
+          ]
+        }
+      },
+      "action": [
+        {"type": "command", "command": "execute as %name% run function pvp:show_stats"},
+        {"type": "navigate", "action": "close"}
+      ]
+    },
+    {
+      "type": "item",
+      "slot": [2, 6],
+      "item": {
+        "id": "minecraft:written_book",
+        "components": {
+          "minecraft:custom_name": "{\"text\":\"Aide\",\"color\":\"aqua\",\"bold\":true}",
+          "minecraft:lore": [
+            "{\"text\":\"/trigger pvp.trigger - menu\",\"color\":\"gray\"}",
+            "{\"text\":\"/trigger pvp.accept - accepter\",\"color\":\"gray\"}",
+            "{\"text\":\"/trigger pvp.decline - refuser\",\"color\":\"gray\"}"
+          ]
+        }
+      }
+    },
+    {
+      "type": "item",
+      "slot": [2, 8],
+      "item": {
+        "id": "minecraft:barrier",
+        "components": {
+          "minecraft:custom_name": "{\"text\":\"Annuler ma demande\",\"color\":\"red\",\"bold\":true}",
+          "minecraft:lore": [
+            "{\"text\":\"Annule une demande de duel\",\"color\":\"gray\"}",
+            "{\"text\":\"que tu viens d'envoyer.\",\"color\":\"gray\"}"
+          ]
+        }
+      },
+      "action": [
+        {"type": "command", "command": "execute as %name% run function pvp:cancel_request"},
+        {"type": "navigate", "action": "close"}
+      ]
+    }
+  ]
+}

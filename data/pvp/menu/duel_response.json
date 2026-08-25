@@ -7,30 +7,34 @@
       "slot": [1, 3],
       "item": {
         "id": "minecraft:lime_wool",
-        "Count": 1,
-        "tag": {
-          "display": {
-            "Name": "{\"text\":\"§a§lAccepter le duel\"}",
-            "Lore": ["{\"text\":\"§7Clique pour rejoindre l'arene\"}"]
-          }
+        "components": {
+          "minecraft:custom_name": "{\"text\":\"Accepter le duel\",\"color\":\"green\",\"bold\":true}",
+          "minecraft:lore": [
+            "{\"text\":\"Clique pour rejoindre l'arene\",\"color\":\"gray\"}"
+          ]
         }
       },
-      "action": {"type": "command", "command": "trigger pvp.accept"}
+      "action": [
+        {"type": "command", "command": "execute as %name% run function pvp:accept_request"},
+        {"type": "navigate", "action": "close"}
+      ]
     },
     {
       "type": "item",
       "slot": [1, 7],
       "item": {
         "id": "minecraft:red_wool",
-        "Count": 1,
-        "tag": {
-          "display": {
-            "Name": "{\"text\":\"§c§lRefuser le duel\"}",
-            "Lore": ["{\"text\":\"§7Clique pour decliner\"}"]
-          }
+        "components": {
+          "minecraft:custom_name": "{\"text\":\"Refuser le duel\",\"color\":\"red\",\"bold\":true}",
+          "minecraft:lore": [
+            "{\"text\":\"Clique pour decliner\",\"color\":\"gray\"}"
+          ]
         }
       },
-      "action": {"type": "command", "command": "trigger pvp.decline"}
+      "action": [
+        {"type": "command", "command": "execute as %name% run function pvp:decline_request"},
+        {"type": "navigate", "action": "close"}
+      ]
     }
   ]
 }

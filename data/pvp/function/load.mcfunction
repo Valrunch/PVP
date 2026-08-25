@@ -53,4 +53,4 @@ scoreboard players enable @a pvp.stats
 scoreboard players set #global pvp.state 0
 scoreboard players add #next_id pvp.nextid 0
 
-tellraw @a [{"text":"[potatoPVP v1.3] datapack charge.","color":"dark_gray"}]
+tellraw @a [{"text":"[potatoPVP v1.0] datapack charge.","color":"dark_gray"}]

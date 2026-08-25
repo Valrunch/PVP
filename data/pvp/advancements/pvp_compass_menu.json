@@ -1,0 +1,16 @@
+{
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:using_item",
+      "conditions": {
+        "item": {
+          "items": ["minecraft:compass"],
+          "nbt": "{pvp_menu:1b}"
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "pvp:open_menu_compass"
+  }
+}

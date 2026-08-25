@@ -16,6 +16,10 @@ scoreboard players enable @a pvp.stats
 # --- Attribution paresseuse d'un ID unique (couvre les nouvelles connexions) ---
 execute as @a unless score @s pvp.id matches 1.. run function pvp:assign_id
 
+# --- Securite des boussoles PvP : si elle est perdue ou detruite, on la
+# restitue instantanement pour tous les joueurs (ancien et nouveau). ---
+execute as @a run function pvp:ensure_pvp_compass
+
 # --- Ouverture du menu principal (GUI) ---
 execute as @a[scores={pvp.trigger=1..}] run menu pvp:main
 execute as @a[scores={pvp.trigger=1..}] run scoreboard players set @s pvp.trigger 0

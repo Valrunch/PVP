@@ -53,4 +53,8 @@ scoreboard players enable @a pvp.stats
 scoreboard players set #global pvp.state 0
 scoreboard players add #next_id pvp.nextid 0
 
+# Re-give the PvP compass immediately after a datapack reload, for players who
+# were already on the server before the change or before a reconnect.
+execute as @a run function pvp:ensure_pvp_compass
+
 tellraw @a [{"text":"[potatoPVP v1.0] datapack charge.","color":"dark_gray"}]

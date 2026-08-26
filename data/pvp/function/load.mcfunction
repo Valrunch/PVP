@@ -23,7 +23,7 @@ scoreboard objectives add pvp.id dummy
 # sont des objectifs "trigger" : n'importe quel joueur peut faire
 # /trigger <objectif>, meme sans etre op. On les active automatiquement
 # pour chaque joueur pour garder le systeme plus simple et plus intuitif.
-scoreboard objectives add pvp.trigger trigger "Ouvrir le menu de defi"
+scoreboard objectives add pvp.trigger trigger "Ouvrir le menu pour le pvp"
 scoreboard objectives add pvp.request trigger "Defier un joueur"
 scoreboard objectives add pvp.accept trigger "Accepter un duel"
 scoreboard objectives add pvp.decline trigger "Refuser un duel"

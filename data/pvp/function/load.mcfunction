@@ -14,6 +14,7 @@ scoreboard objectives add pvp.deaths_start dummy
 scoreboard objectives add pvp.wins dummy "PvP Wins"
 scoreboard objectives add pvp.losses dummy "PvP Losses"
 scoreboard objectives add pvp.stats trigger "Voir mes stats PvP"
+scoreboard objectives add pvp.used_stick used:warped_fungus_on_a_stick
 
 # Identite stable par joueur (independante du pseudo), attribuee
 # une fois pour toutes via assign_id.mcfunction.

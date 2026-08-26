@@ -13,6 +13,10 @@ scoreboard players enable @a pvp.cancel
 scoreboard players enable @a pvp.help
 scoreboard players enable @a pvp.stats
 
+# --- Detection fiable du clic droit sur l'item PvP ---
+execute as @a[scores={pvp.used_stick=1..}] if predicate pvp:menu_item run function pvp:open_menu_compass
+execute as @a[scores={pvp.used_stick=1..}] run scoreboard players set @s pvp.used_stick 0
+
 # --- Attribution paresseuse d'un ID unique (couvre les nouvelles connexions) ---
 execute as @a unless score @s pvp.id matches 1.. run function pvp:assign_id
 

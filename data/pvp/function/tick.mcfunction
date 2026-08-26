@@ -14,11 +14,11 @@ scoreboard players enable @a pvp.help
 scoreboard players enable @a pvp.stats
 
 # --- Detection du clic droit sur l'item PvP ---
-# L'item menu est une epee en diamant custom, utilisee uniquement pour ouvrir
-# le menu principal. C'est plus discret qu'une canne et on evite les duplicates
-# en nettoyant les copies tombees au sol.
-execute as @a[scores={pvp.used_sword=1..}] run function pvp:open_menu_compass
-execute as @a[scores={pvp.used_sword=1..}] run scoreboard players set @s pvp.used_sword 0
+# On revient a la canne a peche pour garder une solution simple, robuste et
+# compatible 1.21.1. L'item est customise via un tag NBT, ce qui suffit au
+# clique droit sans passer par un resource pack.
+execute as @a[scores={pvp.used_rod=1..}] run function pvp:open_menu_compass
+execute as @a[scores={pvp.used_rod=1..}] run scoreboard players set @s pvp.used_rod 0
 
 # --- Attribution paresseuse d'un ID unique (couvre les nouvelles connexions) ---
 execute as @a unless score @s pvp.id matches 1.. run function pvp:assign_id

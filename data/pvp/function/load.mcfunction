@@ -14,7 +14,7 @@ scoreboard objectives add pvp.deaths_start dummy
 scoreboard objectives add pvp.wins dummy "PvP Wins"
 scoreboard objectives add pvp.losses dummy "PvP Losses"
 scoreboard objectives add pvp.stats trigger "Voir mes stats PvP"
-scoreboard objectives add pvp.used_sword used:diamond_sword
+scoreboard objectives add pvp.used_rod used:fishing_rod
 
 # Identite stable par joueur (independante du pseudo), attribuee
 # une fois pour toutes via assign_id.mcfunction.

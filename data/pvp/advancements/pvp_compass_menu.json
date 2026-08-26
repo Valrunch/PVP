@@ -4,7 +4,7 @@
       "trigger": "minecraft:using_item",
       "conditions": {
         "item": {
-          "items": ["minecraft:diamond_sword"],
+          "items": ["minecraft:fishing_rod"],
           "components": {
             "minecraft:custom_data": {
               "pvp_menu": true

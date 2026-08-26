@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:item/handheld",
+  "overrides": [
+    {
+      "predicate": { "custom_model_data": 1 },
+      "model": "minecraft:item/pvp_menu_sword"
+    }
+  ]
+}

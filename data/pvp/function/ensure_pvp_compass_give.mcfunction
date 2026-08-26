@@ -1,0 +1,5 @@
+# Enlever toute copie du menu qui traine au sol pour eviter les duplications
+kill @e[type=item,nbt={Item:{id:"minecraft:diamond_sword",components:{"minecraft:custom_data":{pvp_menu:true}}}}]
+# Supprimer toute version du menu deja presente dans l'inventaire pour eviter les doublons
+clear @s minecraft:diamond_sword[custom_data={pvp_menu:true}]
+execute unless items entity @s container.* minecraft:diamond_sword[custom_data={pvp_menu:true}] run give @s minecraft:diamond_sword[custom_data={pvp_menu:true},custom_name='{"text":"Menu PvP","color":"#00E5FF","italic":false}',lore=['{"text":"Clic droit pour ouvrir le menu PvP","color":"gray"}'],attribute_modifiers=[{id:"pvp:menu_tool_damage",type:"minecraft:generic.attack_damage",amount:0.0d,operation:"add_value",slot:"mainhand"},{id:"pvp:menu_tool_speed",type:"minecraft:generic.attack_speed",amount:0.0d,operation:"add_value",slot:"mainhand"}],unbreakable={}]

@@ -23,9 +23,9 @@ execute as @a[scores={pvp.used_sword=1..}] run scoreboard players set @s pvp.use
 # --- Attribution paresseuse d'un ID unique (couvre les nouvelles connexions) ---
 execute as @a unless score @s pvp.id matches 1.. run function pvp:assign_id
 
-# --- Securite des boussoles PvP : si elle est perdue ou detruite, on la
-# restitue instantanement pour tous les joueurs (ancien et nouveau). ---
-execute as @a run function pvp:ensure_pvp_compass
+# --- L'item PvP n'est donne qu'au chargement, a l'arrivee d'un nouveau
+# joueur et a la fin d'un duel. On ne le regenere pas a chaque tick sinon il
+# "pop"/"depop" en boucle. ---
 
 # --- Ouverture du menu principal (GUI) ---
 execute as @a[scores={pvp.trigger=1..}] run menu pvp:main

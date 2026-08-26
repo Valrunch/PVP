@@ -51,6 +51,9 @@ scoreboard players enable @a pvp.stats
 # sera casse (l'arene ne se reinitialisera pas toute seule). Evite
 # de recharger le datapack pendant un combat actif.
 scoreboard players set #global pvp.state 0
-scoreboard players add #next_id pvp.nextid 0
+scoreboard players set #next_id pvp.nextid 0
+# Reinitialise les IDs PvP pour eviter toute collision stale au chargement.
+execute as @a run scoreboard players set @s pvp.id 0
+execute as @a unless score @s pvp.id matches 1.. run function pvp:assign_id
 
 tellraw @a [{"text":"[potatoPVP v1.0] datapack charge.","color":"dark_gray"}]

@@ -7,6 +7,9 @@
 # du kit qui pose des blocs (seau, TNT, briquet...), il faudra lui donner
 # les tags NBT CanPlaceOn/CanDestroy pour qu'il fonctionne en Adventure.
 gamemode adventure @s
+# Retire explicitement l'item menu pour eviter qu'il reste dans l'inventaire
+# pendant un duel et qu'il soit duplique / conserve accidentalement.
+clear @s minecraft:diamond_sword[custom_data={pvp_menu:true}]
 clear @s
 effect clear @s
 effect give @s minecraft:instant_health 1 250

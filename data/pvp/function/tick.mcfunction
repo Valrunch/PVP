@@ -14,11 +14,11 @@ scoreboard players enable @a pvp.help
 scoreboard players enable @a pvp.stats
 
 # --- Detection du clic droit sur l'item PvP ---
-# On se base sur l'objective "used:warped_fungus_on_a_stick" qui est plus robuste
-# que l'advancement dans 1.21.1. Comme le pack ne donne qu'un seul objet de ce type,
-# il ouvre bien le menu sans passer par un predicate externe.
-execute as @a[scores={pvp.used_stick=1..}] run function pvp:open_menu_compass
-execute as @a[scores={pvp.used_stick=1..}] run scoreboard players set @s pvp.used_stick 0
+# L'item menu est une epee en diamant custom, utilisee uniquement pour ouvrir
+# le menu principal. C'est plus discret qu'une canne et on evite les duplicates
+# en nettoyant les copies tombees au sol.
+execute as @a[scores={pvp.used_sword=1..}] run function pvp:open_menu_compass
+execute as @a[scores={pvp.used_sword=1..}] run scoreboard players set @s pvp.used_sword 0
 
 # --- Attribution paresseuse d'un ID unique (couvre les nouvelles connexions) ---
 execute as @a unless score @s pvp.id matches 1.. run function pvp:assign_id

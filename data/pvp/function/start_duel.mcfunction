@@ -13,8 +13,8 @@ execute as @a[tag=pvp.duel] run function pvp:save_return_state
 # Reference pour la detection de victoire (voir check_win.mcfunction)
 execute as @a[tag=pvp.duel] run scoreboard players operation @s pvp.deaths_start = @s pvp.deaths
 
-execute as @a[tag=pvp.slot1] in multiworld:pvp run tp @s 100 65 90 90 0
-execute as @a[tag=pvp.slot2] in multiworld:pvp run tp @s 100 65 110 -90 0
+execute as @a[tag=pvp.slot1] in multiworld:pvp run tp @s 150 6.00 -139
+execute as @a[tag=pvp.slot2] in multiworld:pvp run tp @s 32 6.00 -136
 
 execute as @a[tag=pvp.duel] run function pvp:prepare_player
 

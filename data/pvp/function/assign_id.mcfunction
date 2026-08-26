@@ -1,7 +1,7 @@
 # Contexte : execute "as" un joueur sans pvp.id (couvre les nouvelles
 # connexions, vu qu'il n'existe pas de hook vanilla "on join").
-# C'est aussi ici, et seulement ici, qu'un joueur est vraiment "nouveau".
-# On lui attribue un identifiant et il utilisera la commande /trigger pvp.trigger.
+# L'ID est attribue depuis un compteur global unique : chaque nouveau joueur
+# reçoit un nombre strictement superieur au precedent, ce qui evite les doublons.
 scoreboard players add #next_id pvp.nextid 1
 scoreboard players operation @s pvp.id = #next_id pvp.nextid
 

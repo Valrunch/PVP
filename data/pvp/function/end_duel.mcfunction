@@ -28,15 +28,7 @@ schedule clear pvp:countdown_go
 # Restore the exact previous position and spawn point before the duel.
 execute as @a[tag=pvp.duel] run function pvp:restore_return_state with storage pvp:tmp.return
 
-# Le menu PvP doit revenir automatiquement a la fin du duel pour que le
-# joueur le retrouve sans devoir le reparcourir manuellement.
-execute as @a[tag=pvp.duel] run function pvp:ensure_pvp_compass
-
 execute as @a[tag=pvp.duel] run function pvp:cleanup_player
-
-# Re-donne la canne PvP a tous ceux qui sont sortis du duel et qui ne l'ont
-# plus dans l'inventaire.
-execute as @a[tag=!pvp.duel] unless items entity @s container.* minecraft:fishing_rod[custom_data={pvp_menu:true}] run function pvp:ensure_pvp_compass_give
 
 function pvp:reset_arena
 scoreboard players set #global pvp.state 0

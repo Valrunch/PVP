@@ -14,7 +14,6 @@ scoreboard objectives add pvp.deaths_start dummy
 scoreboard objectives add pvp.wins dummy "PvP Wins"
 scoreboard objectives add pvp.losses dummy "PvP Losses"
 scoreboard objectives add pvp.stats trigger "Voir mes stats PvP"
-scoreboard objectives add pvp.used_rod used:fishing_rod
 
 # Identite stable par joueur (independante du pseudo), attribuee
 # une fois pour toutes via assign_id.mcfunction.
@@ -53,9 +52,5 @@ scoreboard players enable @a pvp.stats
 # de recharger le datapack pendant un combat actif.
 scoreboard players set #global pvp.state 0
 scoreboard players add #next_id pvp.nextid 0
-
-# Re-give the PvP compass immediately after a datapack reload, for players who
-# were already on the server before the change or before a reconnect.
-execute as @a run function pvp:ensure_pvp_compass
 
 tellraw @a [{"text":"[potatoPVP v1.0] datapack charge.","color":"dark_gray"}]

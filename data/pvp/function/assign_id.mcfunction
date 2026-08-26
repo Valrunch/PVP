@@ -7,4 +7,4 @@ scoreboard players add #next_id pvp.nextid 1
 scoreboard players operation @s pvp.id = #next_id pvp.nextid
 function pvp:ensure_pvp_compass
 
-tellraw @s [{"text":"[Duel] ","color":"dark_gray"},{"text":"Tu as recu une boussole PvP : clic droit dessus pour ouvrir le menu de duel.","color":"gray"}]
+tellraw @s [{"text":"[Duel] ","color":"dark_gray"},{"text":"Tu as recu un objet PvP : clic droit dessus pour ouvrir le menu de duel.","color":"gray"}]

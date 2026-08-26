@@ -4,7 +4,7 @@
       "trigger": "minecraft:using_item",
       "conditions": {
         "item": {
-          "items": ["minecraft:compass"],
+          "items": ["minecraft:warped_fungus_on_a_stick"],
           "nbt": "{pvp_menu:1b}"
         }
       }

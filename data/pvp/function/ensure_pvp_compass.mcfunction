@@ -1,4 +1,6 @@
-# Ensure every player keeps their PvP compass even if they throw it away.
-# Use the modern item-component syntax that matches 1.21 command parsing.
-clear @s minecraft:compass[custom_data={pvp_menu:1b}]
-give @s minecraft:compass[custom_name='{"text":"Menu PvP","color":"aqua","italic":false}',custom_data={pvp_menu:1b}]
+# Ensure every player keeps their PvP menu item even if they throw it away.
+# We use a stick-based item instead of a real compass because plain compasses
+# trigger vanilla right-click behavior (pointing/teleporting) on 1.21.
+clear @s minecraft:warped_fungus_on_a_stick{pvp_menu:1b}
+clear @s minecraft:compass{pvp_menu:1b}
+give @s minecraft:warped_fungus_on_a_stick{pvp_menu:1b,display:{Name:'{"text":"Menu PvP","color":"aqua","italic":false}'}}

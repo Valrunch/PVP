@@ -48,6 +48,13 @@ execute as @a[scores={pvp.stats=1..}] run scoreboard players set @s pvp.stats 0
 execute as @a[scores={pvp.pending_from=1..,pvp.pendingticks=1..}] run scoreboard players remove @s pvp.pendingticks 1
 execute as @a[scores={pvp.pending_from=1..,pvp.pendingticks=..0}] run function pvp:expire_request
 
+# --- Nettoyage des duels fantomes apres un bug ou un tp casse ---
+# Si un joueur porte encore le tag pvp.duel alors qu'il n'est plus dans
+# la dimension du duel, on le remet au propre pour eviter qu'il soit
+# bloque indefiniment comme "en duel".
+execute as @a[tag=pvp.duel] unless data entity @s {Dimension:"multiworld:pvp"} run function pvp:cleanup_player
+execute unless entity @a[tag=pvp.duel] if score #global pvp.state matches 1..2 run scoreboard players set #global pvp.state 0
+
 # --- Suivi d'un duel en cours (decompte ET combat) ---
 # matches 1..2 : 1 = combat, 2 = decompte. Couvrir le decompte aussi
 # permet de detecter une deconnexion pendant les 3-2-1 sans attendre

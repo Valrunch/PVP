@@ -9,4 +9,6 @@ tag @s remove pvp.slot1
 tag @s remove pvp.slot2
 tag @s remove pvp.loser
 scoreboard players set @s pvp.request 0
+scoreboard players set @s pvp.requested_id 0
 scoreboard players set @s pvp.pending_from 0
+scoreboard players set @s pvp.pendingticks 0

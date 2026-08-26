@@ -52,6 +52,17 @@ scoreboard players enable @a pvp.stats
 # de recharger le datapack pendant un combat actif.
 scoreboard players set #global pvp.state 0
 scoreboard players set #next_id pvp.nextid 0
+
+# Nettoie les tags PvP fantomes qui peuvent rester apres un bug / tp casse.
+execute as @a run tag @s remove pvp.duel
+execute as @a run tag @s remove pvp.slot1
+execute as @a run tag @s remove pvp.slot2
+execute as @a run tag @s remove pvp.loser
+execute as @a run scoreboard players set @s pvp.request 0
+execute as @a run scoreboard players set @s pvp.requested_id 0
+execute as @a run scoreboard players set @s pvp.pending_from 0
+execute as @a run scoreboard players set @s pvp.pendingticks 0
+
 # Reinitialise les IDs PvP pour eviter toute collision stale au chargement.
 execute as @a run scoreboard players set @s pvp.id 0
 execute as @a unless score @s pvp.id matches 1.. run function pvp:assign_id

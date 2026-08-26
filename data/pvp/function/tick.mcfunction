@@ -13,19 +13,8 @@ scoreboard players enable @a pvp.cancel
 scoreboard players enable @a pvp.help
 scoreboard players enable @a pvp.stats
 
-# --- Detection du clic droit sur l'item PvP ---
-# On revient a la canne a peche pour garder une solution simple, robuste et
-# compatible 1.21.1. L'item est customise via un tag NBT, ce qui suffit au
-# clique droit sans passer par un resource pack.
-execute as @a[scores={pvp.used_rod=1..}] run function pvp:open_menu_compass
-execute as @a[scores={pvp.used_rod=1..}] run scoreboard players set @s pvp.used_rod 0
-
 # --- Attribution paresseuse d'un ID unique (couvre les nouvelles connexions) ---
 execute as @a unless score @s pvp.id matches 1.. run function pvp:assign_id
-
-# --- Re-donne la canne PvP quand elle a ete perdue, jete, ou retiree, sans
-# la regenerer en boucle si le joueur l'a encore. ---
-execute as @a[tag=!pvp.duel] unless items entity @s container.* minecraft:fishing_rod[custom_data={pvp_menu:true}] run function pvp:ensure_pvp_compass_give
 
 # --- Ouverture du menu principal (GUI) ---
 execute as @a[scores={pvp.trigger=1..}] run menu pvp:main

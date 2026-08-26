@@ -23,9 +23,9 @@ execute as @a[scores={pvp.used_rod=1..}] run scoreboard players set @s pvp.used_
 # --- Attribution paresseuse d'un ID unique (couvre les nouvelles connexions) ---
 execute as @a unless score @s pvp.id matches 1.. run function pvp:assign_id
 
-# --- L'item PvP n'est donne qu'au chargement, a l'arrivee d'un nouveau
-# joueur et a la fin d'un duel. On ne le regenere pas a chaque tick sinon il
-# "pop"/"depop" en boucle. ---
+# --- Re-donne la canne PvP quand elle a ete perdue, jete, ou retiree, sans
+# la regenerer en boucle si le joueur l'a encore. ---
+execute as @a[tag=!pvp.duel] unless items entity @s container.* minecraft:fishing_rod[custom_data={pvp_menu:true}] run function pvp:ensure_pvp_compass_give
 
 # --- Ouverture du menu principal (GUI) ---
 execute as @a[scores={pvp.trigger=1..}] run menu pvp:main

@@ -5,7 +5,11 @@
       "conditions": {
         "item": {
           "items": ["minecraft:warped_fungus_on_a_stick"],
-          "nbt": "{pvp_menu:1b}"
+          "components": {
+            "minecraft:custom_data": {
+              "pvp_menu": 1
+            }
+          }
         }
       }
     }

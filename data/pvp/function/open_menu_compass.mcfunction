@@ -1,2 +1,2 @@
-# Open the PvP menu when the custom item is used.
-function pvp:menu
+# Open the main PvP menu, exactly like the /trigger pvp.trigger command.
+menu pvp:main

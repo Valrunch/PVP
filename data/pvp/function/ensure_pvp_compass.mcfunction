@@ -1,1 +1,1 @@
-execute unless entity @s[items={id:"minecraft:warped_fungus_on_a_stick",components:{"minecraft:custom_data":{pvp_menu:1b}}}] run give @s minecraft:warped_fungus_on_a_stick[custom_data={pvp_menu:1b},custom_name='{"text":"Menu PvP","color":"aqua","italic":false}']
+execute unless items entity @s container.* minecraft:warped_fungus_on_a_stick[custom_data={pvp_menu:1b}] run give @s minecraft:warped_fungus_on_a_stick[custom_data={pvp_menu:1b},custom_name='{"text":"Menu pour le PvP","color":"aqua","italic":false}']

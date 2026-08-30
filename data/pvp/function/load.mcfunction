@@ -51,9 +51,27 @@ scoreboard players enable @a pvp.stats
 # sera casse (l'arene ne se reinitialisera pas toute seule). Evite
 # de recharger le datapack pendant un combat actif.
 scoreboard players set #global pvp.state 0
-scoreboard players set #next_id pvp.nextid 0
+
+# v1.0 : "set ... 0" a ete remis en "add ... 0" (no-op qui preserve la
+# valeur existante). BUG CRITIQUE corrige : la version precedente
+# remettait le compteur ET le pvp.id de chaque joueur EN LIGNE a 0 a
+# chaque /reload, puis les reassignait a partir de 1 — mais un joueur
+# DECONNECTE a ce moment-la gardait son ancien ID. Exemple concret :
+# JoueurA (id=1) se deconnecte, JoueurB (id=2) reste connecte. Un
+# /reload remet JoueurB a 0 puis lui donne le nouvel id=1 -> JoueurA
+# ET JoueurB ont maintenant TOUS LES DEUX l'id=1. Toute demande de duel
+# ciblant l'un touche alors l'autre en meme temps (selecteurs
+# @a[scores={pvp.id=1}] ambigus partout : notifications, tags,
+# teleportations...). Un compteur qui ne fait qu'augmenter, jamais
+# reinitialise, est la seule facon d'eviter ca de façon fiable — c'est
+# d'ailleurs exactement l'invariant que decrit le commentaire
+# d'assign_id.mcfunction ("chaque nouveau joueur recoit un nombre
+# strictement superieur au precedent").
+scoreboard players add #next_id pvp.nextid 0
 
 # Nettoie les tags PvP fantomes qui peuvent rester apres un bug / tp casse.
+# Ces etats sont transitoires (contrairement a pvp.id, qui doit rester
+# stable) : les reinitialiser au reload est sans risque.
 execute as @a run tag @s remove pvp.duel
 execute as @a run tag @s remove pvp.slot1
 execute as @a run tag @s remove pvp.slot2
@@ -63,8 +81,9 @@ execute as @a run scoreboard players set @s pvp.requested_id 0
 execute as @a run scoreboard players set @s pvp.pending_from 0
 execute as @a run scoreboard players set @s pvp.pendingticks 0
 
-# Reinitialise les IDs PvP pour eviter toute collision stale au chargement.
-execute as @a run scoreboard players set @s pvp.id 0
+# v1.0 : ne touche plus a pvp.id des joueurs deja connectes (voir note
+# ci-dessus) — seuls les joueurs qui n'en ont jamais eu (id absent /
+# < 1, donc les vraies nouvelles connexions) passent par assign_id.
 execute as @a unless score @s pvp.id matches 1.. run function pvp:assign_id
 
 tellraw @a [{"text":"[potatoPVP v1.0] datapack charge.","color":"dark_gray"}]

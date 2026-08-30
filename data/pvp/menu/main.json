@@ -4,7 +4,10 @@
   "items": [
     {
       "type": "item",
-      "slot": [1, 2],
+      "slot": [
+        1,
+        2
+      ],
       "item": {
         "id": "minecraft:compass",
         "components": {
@@ -16,13 +19,22 @@
         }
       },
       "action": [
-        {"type": "command", "command": "execute as %name% run function pvp:menu"},
-        {"type": "navigate", "action": "close"}
+        {
+          "type": "command",
+          "command": "execute as %name% run function pvp:menu"
+        },
+        {
+          "type": "navigate",
+          "action": "close"
+        }
       ]
     },
     {
       "type": "item",
-      "slot": [1, 4],
+      "slot": [
+        1,
+        4
+      ],
       "item": {
         "id": "minecraft:totem_of_undying",
         "components": {
@@ -34,13 +46,22 @@
         }
       },
       "action": [
-        {"type": "command", "command": "execute as %name% run function pvp:show_stats"},
-        {"type": "navigate", "action": "close"}
+        {
+          "type": "command",
+          "command": "execute as %name% run function pvp:show_stats"
+        },
+        {
+          "type": "navigate",
+          "action": "close"
+        }
       ]
     },
     {
       "type": "item",
-      "slot": [1, 6],
+      "slot": [
+        1,
+        6
+      ],
       "item": {
         "id": "minecraft:written_book",
         "components": {
@@ -51,11 +72,24 @@
             "{\"text\":\"/trigger pvp.decline - refuser\",\"color\":\"gray\"}"
           ]
         }
-      }
+      },
+      "action": [
+        {
+          "type": "command",
+          "command": "execute as %name% run function pvp:help"
+        },
+        {
+          "type": "navigate",
+          "action": "close"
+        }
+      ]
     },
     {
       "type": "item",
-      "slot": [1, 8],
+      "slot": [
+        1,
+        8
+      ],
       "item": {
         "id": "minecraft:barrier",
         "components": {
@@ -67,13 +101,22 @@
         }
       },
       "action": [
-        {"type": "command", "command": "execute as %name% run function pvp:cancel_request"},
-        {"type": "navigate", "action": "close"}
+        {
+          "type": "command",
+          "command": "execute as %name% run function pvp:cancel_request"
+        },
+        {
+          "type": "navigate",
+          "action": "close"
+        }
       ]
     },
     {
       "type": "item",
-      "slot": [3, 3],
+      "slot": [
+        3,
+        3
+      ],
       "item": {
         "id": "green_wool",
         "components": {
@@ -81,13 +124,22 @@
         }
       },
       "action": [
-        {"type": "command", "command": "execute as %name% run function pvp:accept_request"},
-        {"type": "navigate", "action": "close"}
+        {
+          "type": "command",
+          "command": "execute as %name% run function pvp:accept_request"
+        },
+        {
+          "type": "navigate",
+          "action": "close"
+        }
       ]
     },
     {
       "type": "item",
-      "slot": [3, 7],
+      "slot": [
+        3,
+        7
+      ],
       "item": {
         "id": "red_wool",
         "components": {
@@ -95,8 +147,14 @@
         }
       },
       "action": [
-        {"type": "command", "command": "execute as %name% run function pvp:decline_request"},
-        {"type": "navigate", "action": "close"}
+        {
+          "type": "command",
+          "command": "execute as %name% run function pvp:decline_request"
+        },
+        {
+          "type": "navigate",
+          "action": "close"
+        }
       ]
     }
   ]

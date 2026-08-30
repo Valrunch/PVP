@@ -2,29 +2,34 @@
 # tick.mcfunction — tourne chaque tick (20x/seconde)
 # Chaque bloc ne coute quasi rien tant qu'aucun joueur n'a le
 # score correspondant : le "if"/selector sort immediatement.
+#
+# v1.0 — PERF : les 7 "scoreboard players enable @a ..." qui tournaient
+# ICI pour TOUS les joueurs a CHAQUE tick ont ete retires. Un trigger
+# vanilla reste actif tant qu'il n'a pas ete consomme : le reactiver en
+# boucle 20x/seconde ne servait a rien. Il est maintenant active une
+# seule fois a la connexion (assign_id.mcfunction) et reactive juste
+# apres consommation, uniquement pour le joueur concerne (blocs
+# ci-dessous). pvp.accept / pvp.decline n'ont pas besoin de ce
+# traitement : ils sont deja reactives, cibles, par
+# send_request_notify.mcfunction des qu'une demande arrive.
 # ============================================================
-
-# --- Trigger management : garder les commandes toujours disponibles ---
-scoreboard players enable @a pvp.trigger
-scoreboard players enable @a pvp.request
-scoreboard players enable @a pvp.accept
-scoreboard players enable @a pvp.decline
-scoreboard players enable @a pvp.cancel
-scoreboard players enable @a pvp.help
-scoreboard players enable @a pvp.stats
 
 # --- Attribution paresseuse d'un ID unique (couvre les nouvelles connexions) ---
 execute as @a unless score @s pvp.id matches 1.. run function pvp:assign_id
 
 # --- Ouverture du menu principal (GUI) ---
 execute as @a[scores={pvp.trigger=1..}] run menu pvp:main
+execute as @a[scores={pvp.trigger=1..}] run scoreboard players enable @s pvp.trigger
 execute as @a[scores={pvp.trigger=1..}] run scoreboard players set @s pvp.trigger 0
 
 # --- Envoi d'une demande de duel ciblee ---
 execute as @a[scores={pvp.request=1..}] run function pvp:send_request
+execute as @a[scores={pvp.request=1..}] run scoreboard players enable @s pvp.request
 execute as @a[scores={pvp.request=1..}] run scoreboard players set @s pvp.request 0
 
 # --- Reponse a une demande recue (accepter / refuser) ---
+# pvp.accept / pvp.decline : pas de "enable" ici, deja gere par
+# send_request_notify.mcfunction au moment ou la demande arrive.
 execute as @a[scores={pvp.accept=1..}] run function pvp:accept_request
 execute as @a[scores={pvp.accept=1..}] run scoreboard players set @s pvp.accept 0
 execute as @a[scores={pvp.decline=1..}] run function pvp:decline_request
@@ -32,14 +37,17 @@ execute as @a[scores={pvp.decline=1..}] run scoreboard players set @s pvp.declin
 
 # --- Annulation d'une demande envoyee ---
 execute as @a[scores={pvp.cancel=1..}] run function pvp:cancel_request
+execute as @a[scores={pvp.cancel=1..}] run scoreboard players enable @s pvp.cancel
 execute as @a[scores={pvp.cancel=1..}] run scoreboard players set @s pvp.cancel 0
 
 # --- Aide (liste des commandes) ---
 execute as @a[scores={pvp.help=1..}] run function pvp:help
+execute as @a[scores={pvp.help=1..}] run scoreboard players enable @s pvp.help
 execute as @a[scores={pvp.help=1..}] run scoreboard players set @s pvp.help 0
 
 # --- Stats persos ---
 execute as @a[scores={pvp.stats=1..}] run function pvp:show_stats
+execute as @a[scores={pvp.stats=1..}] run scoreboard players enable @s pvp.stats
 execute as @a[scores={pvp.stats=1..}] run scoreboard players set @s pvp.stats 0
 
 # --- Expiration auto d'une demande non traitee (30s = 600 ticks) ---

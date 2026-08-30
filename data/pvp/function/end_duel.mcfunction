@@ -26,7 +26,11 @@ schedule clear pvp:countdown_1
 schedule clear pvp:countdown_go
 
 # Restore the exact previous position and spawn point before the duel.
-execute as @a[tag=pvp.duel] run function pvp:restore_return_state with storage pvp:tmp.return
+# v1.0 : chaque joueur relit SA propre cle de stockage (pvp:tmp.return1 /
+# return2) — fixe le bug critique ou les deux duellistes recevaient la
+# meme position/inventaire (celui du dernier sauvegarde par start_duel).
+execute as @a[tag=pvp.slot1] run function pvp:restore_return_state with storage pvp:tmp.return1
+execute as @a[tag=pvp.slot2] run function pvp:restore_return_state with storage pvp:tmp.return2
 
 execute as @a[tag=pvp.duel] run function pvp:cleanup_player
 

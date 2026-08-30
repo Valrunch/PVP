@@ -7,6 +7,11 @@
 # du kit qui pose des blocs (seau, TNT, briquet...), il faudra lui donner
 # les tags NBT CanPlaceOn/CanDestroy pour qu'il fonctionne en Adventure.
 gamemode adventure @s
+# v1.0 : "clear @s" remis (avait disparu). Sans lui, les objets encore
+# dans l'inventaire "pvp" d'un joueur qui refait un 2e duel (potions non
+# utilisees, pommes restantes...) s'additionnaient a chaque nouveau kit
+# au lieu d'etre remplaces -> accumulation au fil des duels.
+clear @s
 effect clear @s
 effect give @s minecraft:instant_health 1 250
 function pvp:give_kit

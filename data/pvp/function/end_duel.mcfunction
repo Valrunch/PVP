@@ -34,5 +34,8 @@ execute as @a[tag=pvp.slot2] run function pvp:restore_return_state with storage 
 
 execute as @a[tag=pvp.duel] run function pvp:cleanup_player
 
+# Récompense pour le vainqueur (exécutée APRES la restauration de l'inventaire de survie)
+execute if entity @a[tag=pvp.loser] as @a[tag=pvp.duel,tag=!pvp.loser] run give @s cobblemon:exp_candy_xs 10
+
 function pvp:reset_arena
 scoreboard players set #global pvp.state 0

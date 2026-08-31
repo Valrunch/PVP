@@ -68,3 +68,7 @@ execute unless entity @a[tag=pvp.duel] if score #global pvp.state matches 1..2 r
 # permet de detecter une deconnexion pendant les 3-2-1 sans attendre
 # le debut du combat pour reagir.
 execute if score #global pvp.state matches 1..2 run function pvp:check_win
+
+# Exécute la fonction d'acceptation de manière sécurisée sur le Main Thread
+execute as @a[tag=pvp_accept_pending] run function pvp:accept_request
+tag @a[tag=pvp_accept_pending] remove pvp_accept_pending

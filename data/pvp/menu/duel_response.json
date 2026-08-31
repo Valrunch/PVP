@@ -15,7 +15,7 @@
         }
       },
       "action": [
-        {"type": "command", "command": "execute as %name% run function pvp:accept_request"},
+        {"type": "command", "command": "execute as %name% run tag @s add pvp_accept_pending"},
         {"type": "navigate", "action": "close"}
       ]
     },

@@ -10,6 +10,7 @@ tag @a[tag=pvp.slot2] add pvp.duel
 # Save the exact place and facing direction before entering the duel arena.
 # v1.0 : sauvegarde separee par slot (voir save_return_state.mcfunction) —
 # sinon le 2e joueur ecrase les donnees du 1er (bug critique corrige).
+gamerule keepInventory true
 execute as @a[tag=pvp.slot1] run function pvp:save_return_state {slot:1}
 execute as @a[tag=pvp.slot2] run function pvp:save_return_state {slot:2}
 

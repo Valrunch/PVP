@@ -12,11 +12,14 @@ execute if entity @a[tag=pvp.loser] as @a[tag=pvp.duel,tag=!pvp.loser] run plays
 execute if entity @a[tag=pvp.loser] as @a[tag=pvp.loser] run scoreboard players add @s pvp.losses 1
 execute if entity @a[tag=pvp.loser] as @a[tag=pvp.loser] run title @s title {"text":"DEFAITE","color":"red","bold":true}
 
-# Retour au lobby dans l'overworld — C'EST CE CHANGEMENT DE DIMENSION QUI
-# DECLENCHE l'echange automatique d'inventaire (Dimensional Inventories
-# detecte le changement de pool "pvp" -> "default" et restaure le stuff
-# d'origine). Rester dans multiworld:pvp ne le declencherait PAS.
+# Retour au lobby dans l'overworld
 execute as @a[tag=pvp.duel] in minecraft:overworld run tp @s 0 100 0
+
+# IMPORTANT : On restaure l'inventaire et la position AVANT de désactiver keepInventory.
+# Si on désactive keepInventory alors que le perdant est encore "mort" ou en transition,
+# il peut perdre ses items ou mourir instantanément au respawn.
+execute as @a[tag=pvp.slot1] run function pvp:restore_return_state with storage pvp:tmp.return1
+execute as @a[tag=pvp.slot2] run function pvp:restore_return_state with storage pvp:tmp.return2
 
 # Désactive keepInventory pour ne pas affecter le reste du serveur
 gamerule keepInventory false
@@ -32,8 +35,7 @@ schedule clear pvp:countdown_go
 # v1.0 : chaque joueur relit SA propre cle de stockage (pvp:tmp.return1 /
 # return2) — fixe le bug critique ou les deux duellistes recevaient la
 # meme position/inventaire (celui du dernier sauvegarde par start_duel).
-execute as @a[tag=pvp.slot1] run function pvp:restore_return_state with storage pvp:tmp.return1
-execute as @a[tag=pvp.slot2] run function pvp:restore_return_state with storage pvp:tmp.return2
+# (Déplacé plus haut dans end_duel.mcfunction pour garantir la restauration avant keepInventory=false)
 
 # Récompense pour le vainqueur (exécutée APRES la restauration de l'inventaire de survie)
 execute if entity @a[tag=pvp.loser] as @a[tag=pvp.duel,tag=!pvp.loser] run give @s cobblemon:exp_candy_xs 10

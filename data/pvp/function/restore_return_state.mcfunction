@@ -3,6 +3,8 @@ $tp @s $(x) $(y) $(z) $(yaw) $(pitch)
 $spawnpoint @s $(x) $(y) $(z)
 
 # 2. Restauration de l'inventaire
+# On vide d'abord l'inventaire actuel (le kit PvP) pour éviter les conflits
+clear @s
 $data modify entity @s Inventory set from storage pvp:tmp.return$(slot) Inventory
 $execute store result entity @s SelectedItemSlot int 1 run data get storage pvp:tmp.return$(slot) selected_slot
 

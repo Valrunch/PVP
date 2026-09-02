@@ -13,16 +13,23 @@ execute if entity @a[tag=pvp.loser] as @a[tag=pvp.loser] run scoreboard players 
 execute if entity @a[tag=pvp.loser] as @a[tag=pvp.loser] run title @s title {"text":"DEFAITE","color":"red","bold":true}
 
 # Retour au lobby dans l'overworld
+# On téléporte d'abord pour sortir de la dimension PvP
 execute as @a[tag=pvp.duel] in minecraft:overworld run tp @s 0 100 0
 
-# IMPORTANT : On restaure l'inventaire et la position AVANT de désactiver keepInventory.
-# Si on désactive keepInventory alors que le perdant est encore "mort" ou en transition,
-# il peut perdre ses items ou mourir instantanément au respawn.
+# On soigne IMMÉDIATEMENT pour éviter la mort au respawn (surtout pour le perdant)
+execute as @a[tag=pvp.duel] run effect give @s minecraft:instant_health 1 255 true
+execute as @a[tag=pvp.duel] run effect give @s minecraft:saturation 1 255 true
+
+# On restaure l'inventaire et la position précise
 execute as @a[tag=pvp.slot1] run function pvp:restore_return_state with storage pvp:tmp.return1
 execute as @a[tag=pvp.slot2] run function pvp:restore_return_state with storage pvp:tmp.return2
 
-# Désactive keepInventory pour ne pas affecter le reste du serveur
-gamerule keepInventory false
+# On s'assure que keepInventory est actif pendant la restauration
+gamerule keepInventory true
+
+# On désactive keepInventory seulement après que tout le monde soit stabilisé
+# On utilise un schedule pour laisser le temps au serveur de traiter le TP et la restauration
+schedule function pvp:disable_keepinventory 1t
 
 # Nettoie les compteurs de decompte encore planifies. Sans cela, un ancien
 # compte a rebours peut encore s'executer apres la fin d'un duel et

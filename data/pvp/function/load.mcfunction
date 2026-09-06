@@ -11,6 +11,11 @@ scoreboard objectives add pvp.candidates dummy
 scoreboard objectives add pvp.alive dummy
 scoreboard objectives add pvp.deaths deathCount
 scoreboard objectives add pvp.deaths_start dummy
+# Criterion "health" : se met a jour tout seul (0 pendant l'ecran de mort,
+# revient a 20 - ou plus avec absorption - des que le joueur clique sur
+# Respawn). Sert a detecter "ce joueur vient vraiment de reapparaitre" :
+# voir postduel_shield.mcfunction et le commentaire dans tick.mcfunction.
+scoreboard objectives add pvp.health health
 scoreboard objectives add pvp.wins dummy "PvP Wins"
 scoreboard objectives add pvp.losses dummy "PvP Losses"
 scoreboard objectives add pvp.stats trigger "Voir mes stats PvP"
@@ -76,6 +81,7 @@ execute as @a run tag @s remove pvp.duel
 execute as @a run tag @s remove pvp.slot1
 execute as @a run tag @s remove pvp.slot2
 execute as @a run tag @s remove pvp.loser
+execute as @a run tag @s remove pvp.postduel_shield
 execute as @a run scoreboard players set @s pvp.request 0
 execute as @a run scoreboard players set @s pvp.requested_id 0
 execute as @a run scoreboard players set @s pvp.pending_from 0

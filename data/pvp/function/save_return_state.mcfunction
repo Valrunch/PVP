@@ -12,5 +12,6 @@ $execute store result storage pvp:tmp.return$(slot) z double 1 run data get enti
 $execute store result storage pvp:tmp.return$(slot) yaw float 1 run data get entity @s Rotation[0]
 $execute store result storage pvp:tmp.return$(slot) pitch float 1 run data get entity @s Rotation[1]
 $execute store result storage pvp:tmp.return$(slot) selected_slot int 1 run data get entity @s SelectedItemSlot
+$data modify storage pvp:tmp.return$(slot) slot set value $(slot)
 
 $data modify storage pvp:tmp.return$(slot) Inventory set from entity @s Inventory

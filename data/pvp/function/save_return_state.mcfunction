@@ -1,6 +1,11 @@
-# Save the exact pre-duel position, rotation and inventory so the player can
-# be returned to the exact previous state after the duel, without depending on
-# an external dimensional-inventory plugin.
+# Save the exact pre-duel position, rotation, dimension and inventory so the
+# player can be returned to the exact previous state after the duel, without
+# depending on an external dimensional-inventory plugin.
+# v1.0 : la dimension d'origine est desormais sauvegardee elle aussi (avant,
+# seule la position etait geree, en supposant toujours l'overworld au retour
+# - un joueur qui defiait depuis une autre dimension aurait ete renvoye aux
+# mauvaises coordonnees, dans la mauvaise dimension). Voir
+# restore_return_state.mcfunction.
 # v1.0 : cle de stockage par slot ($(slot) = 1 ou 2). Avant, les deux
 # duellistes ecrivaient dans la MEME cle "pvp:tmp.return" -> le 2e "save"
 # ecrasait le 1er, et au retour les DEUX joueurs recevaient la position ET
@@ -13,5 +18,6 @@ $execute store result storage pvp:tmp.return$(slot) yaw float 1 run data get ent
 $execute store result storage pvp:tmp.return$(slot) pitch float 1 run data get entity @s Rotation[1]
 $execute store result storage pvp:tmp.return$(slot) selected_slot int 1 run data get entity @s SelectedItemSlot
 $data modify storage pvp:tmp.return$(slot) slot set value $(slot)
+$data modify storage pvp:tmp.return$(slot) dimension set from entity @s Dimension
 
 $data modify storage pvp:tmp.return$(slot) Inventory set from entity @s Inventory

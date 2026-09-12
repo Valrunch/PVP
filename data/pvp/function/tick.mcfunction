@@ -17,23 +17,29 @@
 # --- Attribution paresseuse d'un ID unique (couvre les nouvelles connexions) ---
 execute as @a unless score @s pvp.id matches 1.. run function pvp:assign_id
 
-# --- Rattrapage d'un joueur reconnecte APRES la fin (par deconnexion) de SON
-# propre duel ------------------------------------------------------------
-# Si un duelliste se deconnecte, check_win.mcfunction detecte qu'il ne reste
-# qu'un joueur tague pvp.duel et annule proprement LE DUEL DE CE JOUEUR-LA
-# (cleanup_player, restore_return_state...). Mais ces commandes utilisent
-# toutes le selecteur @a, qui ne cible QUE les joueurs connectes - donc rien
-# de tout ca n'a jamais pu s'appliquer au joueur qui vient de se deconnecter.
-# Resultat sans ce correctif : a la reconnexion, il resterait tague pvp.duel
-# a vie (bloque en mode Adventure, incapable de redefier ou d'etre defie,
-# recuperant JAMAIS sa position ni son inventaire d'avant-duel).
-# On le detecte ici : s'il porte encore le tag pvp.duel alors que l'arene est
-# deja libre (state=0, donc SON duel est deja termine sans lui), on le
-# restaure enfin - sans credit de victoire/defaite, puisque ce duel a ete
+# --- Rattrapage d'un joueur reconnecte OU d'un perdant qui vient de
+# respawn pour de vrai ----------------------------------------------------
+# Un seul et meme bloc gere deux cas :
+# 1) Un duelliste s'est deconnecte pendant son duel : check_win.mcfunction
+#    detecte qu'il ne reste qu'un joueur tague pvp.duel et annule proprement
+#    LE DUEL DE CE JOUEUR-LA (cleanup_player, restore_return_state...). Mais
+#    ces commandes utilisent toutes le selecteur @a, qui ne cible QUE les
+#    joueurs connectes - rien de tout ca n'a jamais pu s'appliquer au joueur
+#    qui vient de se deconnecter. Sans ce correctif, il resterait tague
+#    pvp.duel a vie (bloque en mode Adventure) a sa reconnexion.
+# 2) v1.1 : le PERDANT d'un duel normal. end_duel.mcfunction ne restaure
+#    QUE le gagnant tout de suite (un joueur mort ne peut pas etre deplace
+#    de facon fiable entre dimensions). Le perdant garde le tag pvp.duel
+#    jusqu'a ce que CE bloc detecte son vrai respawn (pvp.health repasse a
+#    1..) et termine alors sa restauration - c'est exactement le meme
+#    besoin que le cas (1), juste un chemin different pour y arriver.
+# Dans les deux cas : arene deja libre (state=0) ET joueur reellement en
+# vie (health>=1) = c'est le bon moment, jamais avant. On restaure enfin -
+# sans credit de victoire/defaite dans le cas (1), puisque ce duel a ete
 # annule et non joue jusqu'au bout.
-execute as @a[tag=pvp.duel,tag=pvp.slot1] if score #global pvp.state matches 0 run function pvp:restore_return_state with storage pvp:tmp.return1
-execute as @a[tag=pvp.duel,tag=pvp.slot2] if score #global pvp.state matches 0 run function pvp:restore_return_state with storage pvp:tmp.return2
-execute as @a[tag=pvp.duel] if score #global pvp.state matches 0 run function pvp:cleanup_player
+execute as @a[tag=pvp.duel,tag=pvp.slot1,scores={pvp.health=1..}] if score #global pvp.state matches 0 run function pvp:restore_return_state with storage pvp:tmp.return1
+execute as @a[tag=pvp.duel,tag=pvp.slot2,scores={pvp.health=1..}] if score #global pvp.state matches 0 run function pvp:restore_return_state with storage pvp:tmp.return2
+execute as @a[tag=pvp.duel,scores={pvp.health=1..}] if score #global pvp.state matches 0 run function pvp:cleanup_player
 
 # --- Ouverture du menu principal (GUI) ---
 execute as @a[scores={pvp.trigger=1..}] run menu pvp:main

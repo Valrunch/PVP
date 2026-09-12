@@ -5,14 +5,27 @@
 # gardait juste ce qu'il avait sur lui au moment de la mort/fin du duel.
 # Ce systeme est 100% manuel (pas de mod de separation d'inventaire par
 # dimension sur ce serveur) : c'est ce fichier, et lui seul, qui doit
-# remettre position ET inventaire en place a la fin du duel.
+# remettre position, dimension ET inventaire en place a la fin du duel.
+#
+# v1.0 - IMPORTANT : cette fonction n'est desormais JAMAIS appelee sur un
+# joueur mort (voir end_duel.mcfunction et tick.mcfunction : le gagnant est
+# restaure tout de suite, le perdant attend son vrai respawn - exactement
+# comme c'etait deja fait pour les effets de potion, voir postduel_shield).
+# Un joueur mort ne peut pas etre deplace de facon fiable entre dimensions
+# par une commande /tp : c'est tres probablement la cause du "respawn qui
+# marche mal" (la restauration s'executait avant le vrai respawn cote
+# perdant, dans la mauvaise dimension).
+#
+# v1.0 : restauration dans la dimension d'ORIGINE (sauvegardee par
+# save_return_state.mcfunction) au lieu de l'overworld en dur - un joueur
+# qui defiait depuis une autre dimension revient desormais au bon endroit.
 
 # 1. Nettoyage du kit de duel
 clear @s
 
-# 2. Restauration de la position
-$tp @s $(x) $(y) $(z) $(yaw) $(pitch)
-$spawnpoint @s $(x) $(y) $(z)
+# 2. Restauration de la dimension, de la position et du point de respawn
+$execute in $(dimension) run tp @s $(x) $(y) $(z) $(yaw) $(pitch)
+$execute in $(dimension) run spawnpoint @s $(x) $(y) $(z)
 
 # 3. Restauration de l'inventaire et du slot selectionne
 # IMPORTANT : "set from storage ... Inventory" (copie NBT directe), PAS
@@ -29,7 +42,8 @@ $spawnpoint @s $(x) $(y) $(z)
 $data modify entity @s Inventory set from storage pvp:tmp.return$(slot) Inventory
 $data modify entity @s SelectedItemSlot set value $(selected_slot)
 
-# 4. Soin et nettoyage des effets
+# 4. Soin et nettoyage des effets - sans risque desormais : ce joueur est
+# reellement vivant a ce stade (voir la note v1.1 en haut du fichier).
 effect clear @s
 effect give @s minecraft:instant_health 1 255 true
 effect give @s minecraft:saturation 1 255 true

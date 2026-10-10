@@ -35,4 +35,3 @@ schedule clear pvp:countdown_1
 schedule clear pvp:countdown_go
 execute as @a unless score @s pvp.id matches 1.. run function pvp:assign_id
 execute as @a run function pvp:vault_prepare
-tellraw @a [{"text":"[potatoPVP v1.0] datapack charge.","color":"dark_gray"}]

@@ -14,4 +14,4 @@ scoreboard players enable @s pvp.cancel
 scoreboard players enable @s pvp.help
 scoreboard players enable @s pvp.stats
 function pvp:vault_prepare
-tellraw @s [{"text":"[Duel] ","color":"dark_gray"},{"text":"Tu as un identifiant PvP. Utilise ","color":"gray"},{"text":"/trigger pvp.trigger","color":"yellow","clickEvent":{"action":"run_command","value":"/trigger pvp.trigger"}},{"text":" pour ouvrir le menu.","color":"gray"}]
+tellraw @s [{"text":"[Duel] ","color":"dark_gray"},{"text":"Defie un joueur avec ","color":"gray"},{"text":"/trigger pvp.trigger","color":"yellow","clickEvent":{"action":"run_command","value":"/trigger pvp.trigger"}},{"text":".","color":"gray"}]

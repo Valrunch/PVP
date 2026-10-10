@@ -1,20 +1,19 @@
 {
-  "name": "pvp - Menu principal V1.0",
+  "name": "Duels PvP",
   "rows": 3,
   "items": [
     {
       "type": "item",
       "slot": [
         1,
-        2
+        5
       ],
       "item": {
         "id": "minecraft:compass",
         "components": {
           "minecraft:custom_name": "{\"text\":\"Defier un joueur\",\"color\":\"green\",\"bold\":true}",
           "minecraft:lore": [
-            "{\"text\":\"Affiche la liste des joueurs\",\"color\":\"gray\"}",
-            "{\"text\":\"disponibles dans le chat pour un duel.\",\"color\":\"gray\"}"
+            "{\"text\":\"Choisis un joueur dans le chat.\",\"color\":\"gray\"}"
           ]
         }
       },
@@ -32,23 +31,22 @@
     {
       "type": "item",
       "slot": [
-        1,
-        4
+        2,
+        3
       ],
       "item": {
-        "id": "minecraft:totem_of_undying",
+        "id": "minecraft:lime_wool",
         "components": {
-          "minecraft:custom_name": "{\"text\":\"Mes stats\",\"color\":\"gold\",\"bold\":true}",
+          "minecraft:custom_name": "{\"text\":\"Accepter un duel\",\"color\":\"green\",\"bold\":true}",
           "minecraft:lore": [
-            "{\"text\":\"Affiche tes victoires et\",\"color\":\"gray\"}",
-            "{\"text\":\"tes defaites dans le chat.\",\"color\":\"gray\"}"
+            "{\"text\":\"Reponds a la demande recue.\",\"color\":\"gray\"}"
           ]
         }
       },
       "action": [
         {
           "type": "command",
-          "command": "execute as %name% run function pvp:show_stats"
+          "command": "execute as %name% run tag @s add pvp_accept_pending"
         },
         {
           "type": "navigate",
@@ -59,24 +57,22 @@
     {
       "type": "item",
       "slot": [
-        1,
-        6
+        2,
+        7
       ],
       "item": {
-        "id": "minecraft:written_book",
+        "id": "minecraft:red_wool",
         "components": {
-          "minecraft:custom_name": "{\"text\":\"Aide\",\"color\":\"aqua\",\"bold\":true}",
+          "minecraft:custom_name": "{\"text\":\"Refuser un duel\",\"color\":\"red\",\"bold\":true}",
           "minecraft:lore": [
-            "{\"text\":\"/trigger pvp.trigger - menu\",\"color\":\"gray\"}",
-            "{\"text\":\"/trigger pvp.accept - accepter\",\"color\":\"gray\"}",
-            "{\"text\":\"/trigger pvp.decline - refuser\",\"color\":\"gray\"}"
+            "{\"text\":\"Decline la demande recue.\",\"color\":\"gray\"}"
           ]
         }
       },
       "action": [
         {
           "type": "command",
-          "command": "execute as %name% run function pvp:help"
+          "command": "execute as %name% run function pvp:decline_request"
         },
         {
           "type": "navigate",
@@ -87,16 +83,15 @@
     {
       "type": "item",
       "slot": [
-        1,
-        8
+        3,
+        3
       ],
       "item": {
         "id": "minecraft:barrier",
         "components": {
           "minecraft:custom_name": "{\"text\":\"Annuler ma demande\",\"color\":\"red\",\"bold\":true}",
           "minecraft:lore": [
-            "{\"text\":\"Annule une demande de duel\",\"color\":\"gray\"}",
-            "{\"text\":\"que tu viens d'envoyer.\",\"color\":\"gray\"}"
+            "{\"text\":\"Annule ta demande envoyee.\",\"color\":\"gray\"}"
           ]
         }
       },
@@ -115,18 +110,21 @@
       "type": "item",
       "slot": [
         3,
-        3
+        5
       ],
       "item": {
-        "id": "minecraft:green_wool",
+        "id": "minecraft:totem_of_undying",
         "components": {
-          "minecraft:custom_name": "{\"text\":\"accepter une demande de duel\",\"color\":\"green\",\"bold\":true}"
+          "minecraft:custom_name": "{\"text\":\"Mes stats\",\"color\":\"gold\",\"bold\":true}",
+          "minecraft:lore": [
+            "{\"text\":\"Victoires et defaites.\",\"color\":\"gray\"}"
+          ]
         }
       },
       "action": [
         {
           "type": "command",
-          "command": "execute as %name% run tag @s add pvp_accept_pending"
+          "command": "execute as %name% run function pvp:show_stats"
         },
         {
           "type": "navigate",
@@ -141,15 +139,18 @@
         7
       ],
       "item": {
-        "id": "minecraft:red_wool",
+        "id": "minecraft:written_book",
         "components": {
-          "minecraft:custom_name": "{\"text\":\"refuser une demande de duel\",\"color\":\"red\",\"bold\":true}"
+          "minecraft:custom_name": "{\"text\":\"Aide\",\"color\":\"aqua\",\"bold\":true}",
+          "minecraft:lore": [
+            "{\"text\":\"Liste des commandes.\",\"color\":\"gray\"}"
+          ]
         }
       },
       "action": [
         {
           "type": "command",
-          "command": "execute as %name% run function pvp:decline_request"
+          "command": "execute as %name% run function pvp:help"
         },
         {
           "type": "navigate",

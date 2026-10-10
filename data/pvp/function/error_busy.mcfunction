@@ -1,0 +1,1 @@
+tellraw @s [{"text":"[Duel] ","color":"dark_gray"},{"text":"Arene occupee : ","color":"red"},{"selector":"@a[tag=pvp.slot1]","color":"yellow"},{"text":" VS ","color":"gray"},{"selector":"@a[tag=pvp.slot2]","color":"yellow"},{"text":". Reessaie plus tard.","color":"red"}]

@@ -1,0 +1,2 @@
+$execute unless data storage pvp:stats names.p$(id) run return run tellraw @s [{"text":"- Joueur #$(id) : ","color":"gray"},{"text":"$(w) victoire(s)","color":"green"},{"text":" / ","color":"gray"},{"text":"$(l) defaite(s)","color":"red"}]
+$tellraw @s [{"text":"- ","color":"gray"},{"nbt":"names.p$(id)","storage":"pvp:stats","color":"yellow"},{"text":" : ","color":"gray"},{"text":"$(w) victoire(s)","color":"green"},{"text":" / ","color":"gray"},{"text":"$(l) defaite(s)","color":"red"}]

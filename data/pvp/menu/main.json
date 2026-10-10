@@ -118,7 +118,7 @@
         3
       ],
       "item": {
-        "id": "green_wool",
+        "id": "minecraft:green_wool",
         "components": {
           "minecraft:custom_name": "{\"text\":\"accepter une demande de duel\",\"color\":\"green\",\"bold\":true}"
         }
@@ -141,7 +141,7 @@
         7
       ],
       "item": {
-        "id": "red_wool",
+        "id": "minecraft:red_wool",
         "components": {
           "minecraft:custom_name": "{\"text\":\"refuser une demande de duel\",\"color\":\"red\",\"bold\":true}"
         }
